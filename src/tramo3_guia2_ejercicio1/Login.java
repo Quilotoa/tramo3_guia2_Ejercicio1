@@ -18,6 +18,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -35,6 +36,8 @@ public class Login extends javax.swing.JFrame {
         jtMail = new javax.swing.JTextField();
         jbRegistrar = new javax.swing.JButton();
         jpfPassword = new javax.swing.JPasswordField();
+        jbSalir = new javax.swing.JButton();
+        jtbMostrar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +50,9 @@ public class Login extends javax.swing.JFrame {
         jlPassword.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
         jlPassword.setText("Password:");
 
+        jbRegistrar.setBackground(new java.awt.Color(0, 153, 0));
+        jbRegistrar.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        jbRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         jbRegistrar.setText("Registrar");
         jbRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -57,6 +63,28 @@ public class Login extends javax.swing.JFrame {
         jpfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jpfPasswordActionPerformed(evt);
+            }
+        });
+
+        jbSalir.setBackground(new java.awt.Color(255, 0, 51));
+        jbSalir.setFont(new java.awt.Font("Bookman Old Style", 1, 12)); // NOI18N
+        jbSalir.setForeground(new java.awt.Color(255, 255, 255));
+        jbSalir.setText("SALIR");
+        jbSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbSalirMouseClicked(evt);
+            }
+        });
+
+        jtbMostrar.setText("Mostrar");
+        jtbMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtbMostrarMouseClicked(evt);
+            }
+        });
+        jtbMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbMostrarActionPerformed(evt);
             }
         });
 
@@ -74,10 +102,14 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jlInicioDeSesion)
                     .addComponent(jtMail)
                     .addComponent(jpfPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtbMostrar)
+                .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbRegistrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(164, 164, 164))
         );
         layout.setVerticalGroup(
@@ -89,13 +121,16 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlMail))
-                .addGap(8, 8, 8)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jpfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlPassword))
-                .addGap(49, 49, 49)
+                    .addComponent(jlPassword)
+                    .addComponent(jtbMostrar))
+                .addGap(44, 44, 44)
                 .addComponent(jbRegistrar)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jbSalir)
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -125,6 +160,36 @@ public class Login extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jbRegistrarMouseClicked
+
+    private void jbSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbSalirMouseClicked
+        // TODO add your handling code here:
+        
+        int a = JOptionPane.YES_NO_OPTION;
+        int resultado = JOptionPane.showConfirmDialog(this, "Desea Salir?","SALIR",a);
+        if(resultado==0){
+            
+            System.exit(0);
+        
+        }
+        
+    }//GEN-LAST:event_jbSalirMouseClicked
+
+    private void jtbMostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbMostrarMouseClicked
+        // TODO add your handling code here:
+        if (jtbMostrar.isSelected()){
+        jtbMostrar.setVisible(rootPaneCheckingEnabled);
+        jpfPassword.setEchoChar((char)0);
+        }
+        else{
+            jtbMostrar.setVisible(rootPaneCheckingEnabled);
+            jpfPassword.getPassword();
+        }
+        
+    }//GEN-LAST:event_jtbMostrarMouseClicked
+
+    private void jtbMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMostrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtbMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,10 +228,12 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbRegistrar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JLabel jlInicioDeSesion;
     private javax.swing.JLabel jlMail;
     private javax.swing.JLabel jlPassword;
     private javax.swing.JPasswordField jpfPassword;
     private javax.swing.JTextField jtMail;
+    private javax.swing.JToggleButton jtbMostrar;
     // End of variables declaration//GEN-END:variables
 }
